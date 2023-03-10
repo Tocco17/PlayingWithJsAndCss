@@ -58,18 +58,24 @@
     <script>
         const list = document.querySelectorAll('li.list')
         
-        const activeLink = (clicked) => {
+        // const activeLink = (clicked) => {
+        //     list.forEach((item) =>  item.classList.remove('active'))
+        //     clicked.classList.add('active')
+        // }
+        // list.forEach(item => item.addEventListener('click', (e) => activeLink(item)))
+
+        // function activeLink(){
+        //     list.forEach((item) =>  item.classList.remove('active'))
+        //     this.classList.add('active')
+        // }
+        // list.forEach(item => item.addEventListener('click', activeLink))
+
+        const activeLink = (clicked, index) => {
             list.forEach((item) =>  item.classList.remove('active'))
             clicked.classList.add('active')
+            document.documentElement.style.setProperty('--navigation-x', index)
         }
-
-        function activeLink2(){
-            list.forEach((item) =>  item.classList.remove('active'))
-            this.classList.add('active')
-        }
-
-        // list.forEach(item => item.addEventListener('click', (e) => activeLink(item)))
-        list.forEach(item => item.addEventListener('click', activeLink2))
+        list.forEach((item, index) => item.addEventListener('click', (e) => activeLink(item, index)))
     </script>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>

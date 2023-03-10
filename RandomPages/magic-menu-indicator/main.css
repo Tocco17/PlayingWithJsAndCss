@@ -9,6 +9,8 @@
 :root
 {
     --clr: #222327;
+    --transition-time: 0.5s;
+    --navigation-x: 0;
 }
 
 body
@@ -66,7 +68,7 @@ body
     line-height: 75px;
     font-size: 1.5em;
     text-align: center;
-    transition:  0.5s;
+    transition:  var(--transition-time);
     color: var(--clr);
 }
 
@@ -82,7 +84,7 @@ body
     font-weight: 400;
     font-size: 0.75em;
     letter-spacing: 0.05em;
-    transition: 0.5s;
+    transition:  var(--transition-time);
     opacity: 0;
     transform: translateY(20px);
 }
@@ -102,7 +104,9 @@ body
     background: #29fd53;
     border-radius: 50%;
     border: 6px solid var(--clr);
-    transition: 0.5s;
+    transition: var(--transition-time);
+
+    transform: translateX(calc(70px * var(--navigation-x)));
 }
 
 .indicator::before,
@@ -131,7 +135,7 @@ body
 }
 
 
-.navigation ul li:nth-child(1).active ~ .indicator
+/* .navigation ul li:nth-child(1).active ~ .indicator
 {
     transform: translateX(calc(70px * 0));
 }
@@ -154,7 +158,7 @@ body
 .navigation ul li:nth-child(5).active ~ .indicator
 {
     transform: translateX(calc(70px * 4));
-}
+} */
 
 
 
