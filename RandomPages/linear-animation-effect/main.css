@@ -1,0 +1,75 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root
+{
+    --basic-color: #40986a;
+}
+
+body
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #000;
+}
+
+.container
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 40px;
+}
+
+.container .box
+{
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(45deg, var(--basic-color) 10%, transparent 10%, transparent 50%, var(--basic-color) 50%, var(--basic-color) 60%, transparent 60%, transparent 100% );
+    filter: hue-rotate(calc(var(--i) * 90deg));
+    background-size: 40px 40px;
+    rotate: calc(var(--i) * 90deg);
+
+    animation-name: box-animation;
+    animation-duration: 4s;
+    animation-timing-function: linear;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+
+    animation: box-moving 4s linear 0s infinite alternate, box-animation 4s linear 0s infinite ;
+}
+
+@keyframes box-animation
+{
+    0%
+    {
+        filter: hue-rotate(calc(var(--i) * -45deg));
+    }
+    50%
+    {
+        filter: hue-rotate(calc(var(--i) * +45deg));
+    }
+    100%
+    {
+        filter: hue-rotate(calc(var(--i) * -45deg));
+    }
+}
+
+@keyframes box-moving
+{
+    0%
+    {
+        background-position: 0px;
+    }
+    100%
+    {
+        background-position: 40px;
+    }
+}
