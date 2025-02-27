@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Prev & Hover Effects</title>
+	<link rel="stylesheet" href="main.css">
+</head>
+<body>
+	<div class="container">
+		<div class="box"><span>1</span></div>
+		<div class="box"><span>2</span></div>
+		<div class="box"><span>3</span></div>
+		<div class="box"><span>4</span></div>
+		<div class="box"><span>5</span></div>
+		<div class="box"><span>6</span></div>
+	</div>
+
+	<script>
+
+		const clearClass = (box) => box.classList.remove('prev', 'next', 'hovered');
+
+		const mouseOverEvent = (box, index, boxes) => {
+			boxes.forEach((b, i) => {
+					const className = (() => {
+						if(i < index) return 'prev'
+						if(i === index) return 'hovered'
+						return 'next'
+					})()
+
+					clearClass(b)
+					b.classList.add(className)
+				})
+		}
+
+		const mouseLeaveEvent = (box, index, boxes) => {
+			boxes.forEach((b, i) => {
+				clearClass(b)
+			})
+		}
+
+		document.querySelectorAll('.box').forEach((box, index, boxes) => {
+			box.addEventListener('mouseover', () => { mouseOverEvent(box, index, boxes) })
+			box.addEventListener('mouseleave', () => { mouseLeaveEvent(box, index, boxes) })
+		})
+	</script>
+</body>
+</html>
